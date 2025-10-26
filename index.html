@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Site Name</title>
+  <meta name="description" content="Short description of your site" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">learn together</h1>
+      <nav class="main-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="home" class="hero">
+      <h2>Welcome fam</h2>
+      <p>i am happy to announce this site where you gonna found everything you need to ace your med exam and also able to connect with other medicos.</p>
+      <a class="btn" href="#contact">Get in touch</a>
+    </section>
+
+    <section id="about">
+      <h3>myself Mitali jain</h3>
+      <p>this is what we need in exam all content in one place also some chilling time with our frds. this idea basically to enjoy our studies.</p>
+    </section>
+
+    <section id="services">
+      <h3>Services</h3>
+      <ul>
+        <li>Service one</li>
+        <li>Service two</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h3>Contact</h3>
+      <form id="contactForm">
+        <label>Name<input name="name" required /></label>
+        <label>Email<input name="email" type="email" required /></label>
+        <label>Message<textarea name="message" required></textarea></label>
+        <button type="submit">Send</button>
+      </form>
+      <div id="formResult"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© <span id="year"></span> Your Site Name</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>document.getElementById('year').textContent = new Date().getFullYear();
+
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const data = new FormData(form);
+  const obj = Object.fromEntries(data.entries());
+
+  // For now, we'll just show the result on the page.
+  document.getElementById('formResult').textContent = 'Thanks ' + obj.name + '. Message received (demo).';
+
+  form.reset();
+  // To actually send: configure Netlify Forms, Formspree, or server endpoint.
+});
